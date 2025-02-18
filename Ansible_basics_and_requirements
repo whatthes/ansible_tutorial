@@ -1,0 +1,27 @@
+Ansible allows for configuration-as-code
+
+1. OpenSSH is installed on controller and agent machines
+    -ssh client is installed on controller
+    
+2. Make connection from controller to server, answer yes to inital connection prompt
+
+3. Create SSH Keypair(with a passphrase) for your normal user account
+
+4. Create SSH Key that is specific to Ansible
+
+Actual Steps/Example
+
+From Controller:
+
+1.ssh into server to register ECDSA key fingerprint
+
+2.run `ssh-keygen -t ed25519 -C "weemin default"`;  store it in default; enter passphrase
+
+3.run `ssh-copy-id -i ~/.ssh/id_ed25519.pub pi@192.168.1.217`      send key to agent, you can check if pub key is sent to agent in their ~/.ssh/authorized_keys file
+
+
+Generate Ansibile Key
+
+1.`ssh-keygen -t ed25519 -C "ansible"`;     name this key ansible instead of default; dont create passphrase
+
+2.`ssh-copy-id -i ~/.ssh/ansible.pub pi@192.168.1.217`;    send this key to agent
