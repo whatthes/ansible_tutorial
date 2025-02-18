@@ -25,3 +25,9 @@ Generate Ansibile Key
 1.`ssh-keygen -t ed25519 -C "ansible"`;     name this key ansible instead of default; dont create passphrase
 
 2.`ssh-copy-id -i ~/.ssh/ansible.pub pi@192.168.1.217`;    send this key to agent
+
+Install Ansible
+
+1. `sudo apt install ansible`
+
+Create inventory file which stores ip addresses of agents/servers
