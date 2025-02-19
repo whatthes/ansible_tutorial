@@ -1,0 +1,9 @@
+---
+
+- host: all     #
+  become: true  #assume sudo priviledges
+  tasks:
+
+  - name: install apache2 package        #name of play
+    apt:
+      name: apache2                      #check documentation for arguments

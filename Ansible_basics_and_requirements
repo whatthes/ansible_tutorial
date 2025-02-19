@@ -31,3 +31,28 @@ Install Ansible
 1. `sudo apt install ansible`
 
 Create inventory file which stores ip addresses of agents/servers
+
+1. `ansible all --key-file ~/.ssh/ansible -i inventory -m ping`  make sure connections are made to the servers listed in inventory
+
+2. if you create an ansible.cfg file in local ansible folder, you can just call `ansible all -m ping`
+
+3. you can list all servers with `ansible all --list-hosts`
+
+4. `ansible all -m gather_facts` verbose list hosts;  add option `--limit 192.168.1.217` to show only limited
+
+
+Command that make changes/ elevate permissions
+
+#check ansible modules documentation 
+
+`ansible all -m apt -a update_cache=true --become --ask-become-pass` ; `--become --ask-become-pass`  same as running as sudo
+
+`ansible all -m apt -a name=vim-nox --become --ask-become-pass` ; `--become --ask-become-pass`
+
+go to /var/log to check the commands that have been run
+
+
+Create ansible playbook
+eg install_apache.yml
+
+`ansible-playbook --ask-become-pass <playbook name>` to run the playbook
